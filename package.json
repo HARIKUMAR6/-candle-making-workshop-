@@ -1,0 +1,17 @@
+{
+  "name": "ember-and-wick",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ember & Wick — candle making workshop website. HTML5, Tailwind CSS v4 (CLI), vanilla JavaScript.",
+  "scripts": {
+    "build": "npm run build:css",
+    "build:css": "tailwindcss -i ./src/css/main.css -o ./assets/css/styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/css/main.css -o ./assets/css/styles.css --watch=always",
+    "serve": "node scripts/serve.mjs",
+    "dev": "npm run build:css && node scripts/dev.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

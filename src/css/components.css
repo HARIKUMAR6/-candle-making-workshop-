@@ -1,0 +1,634 @@
+/* =========================================================================
+   COMPONENTS — reusable, token-driven primitives.
+   Rule: these hold the brand's repeated decisions. Page layout stays in
+   Tailwind utilities in the HTML.
+   ========================================================================= */
+
+@layer components {
+  /* ---------- Layout shells ---------- */
+  .shell, .shell-narrow, .shell-wide, .shell-prose {
+    inline-size: 100%;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .shell        { max-inline-size: calc(var(--container-site) + var(--gutter) * 2); }
+  .shell-wide   { max-inline-size: calc(var(--container-wide) + var(--gutter) * 2); }
+  .shell-narrow { max-inline-size: calc(var(--container-narrow) + var(--gutter) * 2); }
+  .shell-prose  { max-inline-size: calc(var(--container-prose) + var(--gutter) * 2); }
+
+  .section    { padding-block: var(--spacing-section); }
+  .section-sm { padding-block: var(--spacing-section-sm); }
+
+  /* ---------- Typography roles ---------- */
+  .text-display-role {
+    font-family: var(--ff-display);
+    font-size: var(--text-display);
+    line-height: var(--text-display--line-height);
+    letter-spacing: var(--text-display--letter-spacing);
+    font-weight: 350;
+    color: var(--c-ink);
+    text-wrap: balance;
+  }
+  /* Italic serif accent word inside a heading: <em class="accent-word"> */
+  .accent-word {
+    font-family: var(--ff-accent);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--c-accent);
+    letter-spacing: 0;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--ff-sans);
+    font-size: var(--text-caption);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+  }
+  .eyebrow::before {          /* small wick line; inline-start so it flips in RTL */
+    content: "";
+    inline-size: 1.75rem;
+    block-size: 1px;
+    background: currentColor;
+  }
+  [dir="rtl"] .eyebrow { letter-spacing: 0; text-transform: none; font-size: var(--text-small); }
+
+  .lead { font-size: var(--text-lead); line-height: var(--text-lead--line-height); color: var(--c-text); }
+  .meta { font-size: var(--text-small); color: var(--c-text-muted); }
+
+  /* ---------- Links ---------- */
+  .link {
+    color: var(--c-link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: color 200ms var(--ease-soft), text-decoration-thickness 200ms;
+  }
+  .link:hover { color: var(--c-link-hover); text-decoration-thickness: 2px; }
+
+  /* Arrow link: label + directional arrow that nudges toward inline-end */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--c-ink);
+    border-block-end: 1px solid currentColor;
+    padding-block-end: 0.15rem;
+  }
+  .link-arrow svg { transition: translate 250ms var(--ease-soft); }
+  .link-arrow:hover { color: var(--c-accent); }
+  .link-arrow:hover svg { translate: 0.25rem 0; }
+  [dir="rtl"] .link-arrow:hover svg { translate: -0.25rem 0; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-block-size: 3rem;          /* ≥ 44px touch target */
+    padding-inline: 1.625rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    font-family: var(--ff-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 220ms var(--ease-soft), color 220ms var(--ease-soft),
+                border-color 220ms var(--ease-soft), box-shadow 220ms var(--ease-soft);
+  }
+  .btn:disabled, .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
+  .btn-sm { min-block-size: 2.5rem; padding-inline: 1.125rem; font-size: 0.875rem; }
+  .btn-lg { min-block-size: 3.5rem; padding-inline: 2rem; font-size: 1rem; }
+
+  .btn-primary { background: var(--c-btn-primary-bg); color: var(--c-btn-primary-fg); }
+  .btn-primary:hover { background: var(--c-btn-primary-hover); box-shadow: var(--sh-soft); }
+
+  .btn-accent { background: var(--c-accent); color: var(--c-on-accent); }
+  .btn-accent:hover { background: var(--c-accent-hover); box-shadow: var(--sh-soft); }
+
+  .btn-secondary {
+    background: var(--c-btn-secondary-bg);
+    color: var(--c-btn-secondary-fg);
+    border-color: var(--c-btn-secondary-border);
+  }
+  .btn-secondary:hover { background: var(--c-btn-secondary-hover); }
+
+  /* On image overlays / inverse bands */
+  /* Photography is always under a dark scrim, so this button is identical in both themes. */
+  .btn-on-image { background: var(--c-on-image); color: var(--c-on-image-ink); }
+  .btn-on-image:hover { background: color-mix(in oklab, var(--c-on-image) 82%, var(--c-on-image-accent)); }
+
+  .icon-btn {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    border-radius: var(--radius-pill);
+    color: var(--c-ink);
+    transition: background-color 200ms var(--ease-soft);
+  }
+  .icon-btn:hover { background: var(--c-section-alt); }
+
+  /* Preference controls (theme + direction) in the header, mobile menu and footer.
+     Same height, same hairline and fill, fully rounded: a circle for the theme icon,
+     a pill for the text-only direction label. The current value is marked in accent. */
+  .pref-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 2.5rem;
+    border: 1px solid color-mix(in oklab, var(--c-border-strong) 55%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in oklab, var(--c-surface) 72%, transparent);
+    color: var(--c-ink);
+    transition: background-color 200ms var(--ease-soft), border-color 200ms var(--ease-soft), color 200ms var(--ease-soft), scale 150ms var(--ease-soft);
+  }
+  .pref-btn:hover { background: var(--c-section-alt); border-color: var(--c-border-strong); }
+  .pref-btn:active { scale: 0.95; }
+  .pref-btn--round { inline-size: 2.5rem; }
+  .pref-btn--round[aria-pressed="true"] { color: var(--c-accent); }
+  .pref-btn--pill {
+    min-inline-size: 3.75rem; /* fits "LTR" and "RTL" alike, so the pill never changes width */
+    padding-inline: 0.875rem;
+    font-size: var(--text-caption);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.1em;
+  }
+  .pref-btn--pill [data-dir-label] { color: var(--c-accent); }
+
+  /* Footer social links: circular, same hairline family as .pref-btn. Brand glyphs are
+     filled in currentColor (ink → accent on hover/focus), so they follow both themes. */
+  .social-btn {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    border: 1px solid color-mix(in oklab, var(--c-border-strong) 55%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in oklab, var(--c-surface) 72%, transparent);
+    color: var(--c-ink);
+    transition: background-color 200ms var(--ease-soft), border-color 200ms var(--ease-soft), color 200ms var(--ease-soft), translate 200ms var(--ease-soft);
+  }
+  .social-btn:hover,
+  .social-btn:focus-visible { color: var(--c-accent); border-color: var(--c-accent); background: var(--c-surface); }
+  .social-btn:hover { translate: 0 -2px; }
+  @media (prefers-reduced-motion: reduce) { .social-btn:hover { translate: none; } }
+
+  /* ---------- Form fields ---------- */
+  /* align-content: start — when a row-mate has a hint line, the field must not stretch its input */
+  .field { display: grid; align-content: start; gap: 0.5rem; }
+  .field-label { font-size: var(--text-small); font-weight: 600; color: var(--c-ink); }
+  .field-hint  { font-size: var(--text-small); color: var(--c-text-muted); }
+  .field-error {
+    display: flex; align-items: center; gap: 0.375rem;
+    font-size: var(--text-small); font-weight: 600; color: var(--c-error);
+  }
+  .input, .select, .textarea {
+    inline-size: 100%;
+    min-block-size: 3rem;
+    padding-inline: 1rem;
+    padding-block: 0.75rem;
+    background: var(--c-field-bg);
+    color: var(--c-ink);
+    border: 1px solid var(--c-field-border);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    text-align: start;
+    transition: border-color 200ms var(--ease-soft), box-shadow 200ms var(--ease-soft);
+  }
+  .textarea { min-block-size: 8rem; resize: vertical; }
+  .input::placeholder, .textarea::placeholder { color: var(--c-field-placeholder); opacity: 1; }
+  .input:hover, .select:hover, .textarea:hover { border-color: var(--c-ink); }
+  .input:focus-visible, .select:focus-visible, .textarea:focus-visible {
+    outline: none;
+    border-color: var(--c-field-focus);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--c-field-focus) 28%, transparent);
+  }
+  /* Error = colour + icon + text (never colour alone) */
+  .input[aria-invalid="true"], .select[aria-invalid="true"], .textarea[aria-invalid="true"] {
+    border-color: var(--c-error);
+    border-inline-start-width: 4px;
+  }
+  .select {
+    appearance: none;
+    padding-inline-end: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238C7558' stroke-width='1.6'%3E%3Cpath d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+  [dir="rtl"] .select { background-position: left 1rem center; }
+
+  /* Choice tiles: native radios/checkboxes inside a large, tappable label.
+     Selected state = accent border + thicker inline-start edge + tint (not colour alone,
+     and the native radio dot remains visible). */
+  .choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    min-block-size: 3rem;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--c-field-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-field-bg);
+    color: var(--c-ink);
+    cursor: pointer;
+    transition: border-color 200ms var(--ease-soft), background-color 200ms var(--ease-soft);
+  }
+  .choice input { margin-block-start: 0.2rem; inline-size: 1.125rem; block-size: 1.125rem; accent-color: var(--c-accent); flex-shrink: 0; }
+  .choice:hover { border-color: var(--c-ink); }
+  .choice:has(input:checked) {
+    border-color: var(--c-accent);
+    box-shadow: inset 3px 0 0 var(--c-accent);
+    background: var(--c-accent-soft);
+  }
+  [dir="rtl"] .choice:has(input:checked) { box-shadow: inset -3px 0 0 var(--c-accent); }
+  .choice:has(input:focus-visible) { outline: 2px solid var(--c-focus-ring); outline-offset: 3px; }
+  .choice:has(input[aria-invalid="true"]) { border-color: var(--c-error); }
+
+  /* Notices (form status, error summary): icon/heading text + colour + inline-start rule */
+  .notice {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    border-inline-start: 4px solid var(--c-accent);
+    background: var(--c-accent-soft);
+    color: var(--c-text);
+  }
+  .notice:focus { outline: none; }
+  .notice:focus-visible { outline: 2px solid var(--c-focus-ring); outline-offset: 3px; }
+  .notice-success { border-inline-start-color: var(--c-success); background: var(--c-sage-soft); }
+  .notice-error { border-inline-start-color: var(--c-error); }
+  .notice-info { border-inline-start-color: var(--c-accent); }
+
+  .spinner {
+    inline-size: 1rem; block-size: 1rem;
+    border: 2px solid currentColor; border-inline-end-color: transparent;
+    border-radius: var(--radius-pill);
+    animation: spin 700ms linear infinite;
+  }
+  @keyframes spin { to { rotate: 360deg; } }
+
+  /* ---------- Tags (always text + colour) ---------- */
+  .tag {
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-caption);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--c-accent-soft);
+    color: var(--c-accent);
+  }
+  .tag-sage { background: var(--c-sage-soft); color: var(--c-sage); }
+  .tag-outline { background: transparent; color: var(--c-text-muted); box-shadow: inset 0 0 0 1px var(--c-border-strong); }
+  [dir="rtl"] .tag { letter-spacing: 0; text-transform: none; }
+
+  /* ---------- Image frames ---------- */
+  /* Usage: <figure class="frame aspect-portrait"><img ...></figure> */
+  .frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--c-section-alt);  /* warm fill while loading */
+    isolation: isolate;
+  }
+  .frame > img, .frame > picture > img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: var(--focus, 50% 50%);
+    transition: scale 900ms var(--ease-soft), filter 600ms var(--ease-soft);
+  }
+  /* Signature motif: the arch — a candle-flame / chapel-window silhouette. */
+  .frame-arch { border-radius: 999px 999px var(--radius-md) var(--radius-md); }
+  /* Asymmetric editorial corner — direction-aware */
+  .frame-notch { border-start-end-radius: var(--radius-xl); border-end-start-radius: var(--radius-xl); border-start-start-radius: var(--radius-xs); border-end-end-radius: var(--radius-xs); }
+
+  .frame-hover:hover > img, .frame-hover:hover > picture > img { scale: 1.04; }
+
+  /* Bottom scrim — only where text sits over an image */
+  .frame-scrim::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--c-overlay) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  /* The caption carries its own scrim: full --c-overlay strength behind every line of
+     text (whatever the frame's height), then a 3rem fade above. Worst case — ivory
+     text over a pure-white photo under a 62% overlay — is ≈ 4.8:1 (AA). */
+  .frame-caption {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 1;
+    padding: clamp(1rem, 0.8rem + 1vw, 1.75rem);
+    padding-block-start: calc(clamp(1rem, 0.8rem + 1vw, 1.75rem) + 3rem);
+    background-image: linear-gradient(to top, var(--c-overlay) calc(100% - 3rem), transparent);
+    color: #FBF7F0;
+  }
+
+  /* Warm grade applied consistently so mixed photography reads as one shoot */
+  .img-graded { filter: saturate(0.92) sepia(0.06) contrast(1.02); }
+  :root[data-theme="dark"] .img-graded { filter: saturate(0.88) sepia(0.06) brightness(0.92); }
+
+  /* ---------- Hero (one viewport strategy for every homepage) ---------- */
+  /* The hero box starts at the top of the page (under the fixed, transparent header)
+     and is sized from the viewport: 100svh, never shorter than 34rem (small or
+     landscape phones) and never taller than 60rem (very tall screens, where the next
+     section should start to show). It is a MIN height: if text wraps further than
+     designed, the hero grows instead of clipping. Both homepages use .hero, so at the
+     same viewport their heroes are the same height by construction. */
+  /* --hero-media-min is the photography both heroes always keep visible on phones
+     (below the copy on Home 01, above it on Home 02). Sharing one value keeps the two
+     heroes the same height even when short screens make the copy outgrow 100svh. */
+  .hero {
+    --hero-block: clamp(34rem, 100svh, 60rem);
+    --hero-media-min: clamp(7.5rem, 24svh, 18rem);
+    position: relative;
+    min-block-size: var(--hero-block);
+    isolation: isolate;
+  }
+
+  /* Hero headline: one size for every homepage. Capped by viewport HEIGHT as well as
+     width (9svh), so short laptop screens (1366×768, 1280×800) keep the whole hero
+     composition inside the first view instead of pushing the CTAs below the fold. */
+  .hero-title {
+    font-family: var(--ff-display);
+    font-size: clamp(2.125rem, min(1.4rem + 3.6vw, 9svh), 4.75rem);
+    font-weight: 350;
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    color: var(--c-ink);
+    text-wrap: balance;
+  }
+  [dir="rtl"] .hero-title { letter-spacing: 0; line-height: 1.2; }
+
+  /* CTA pair: full-width, equal buttons stacked on phones; inline from sm. */
+  .hero-actions { display: grid; gap: 0.75rem; }
+  @media (min-width: 36rem) {
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; }
+  }
+
+  /* Full-bleed hero scrim: strongest at the inline-start (where the text sits) and
+     at the bottom; mirrored in RTL. Below lg the text sits at the bottom, so the
+     scrim runs bottom → top instead. */
+  /* Below lg the copy sits under the reserved photo band (--hero-media-min), so the scrim
+     is solid everywhere except that band: text never sits on an unscrimmed photo,
+     however tall the copy wraps (measured ≥ 4.5:1 at every tested width). */
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to top, var(--c-overlay) 0%, var(--c-overlay) calc(100% - var(--hero-media-min)), transparent 100%);
+  }
+  @media (min-width: 64rem) {
+    .hero-scrim {
+      background:
+        linear-gradient(to right, var(--c-overlay) 0%, var(--c-overlay) 34%, transparent 72%),
+        linear-gradient(to top, var(--c-overlay) 0%, transparent 40%);
+    }
+    [dir="rtl"] .hero-scrim {
+      background:
+        linear-gradient(to left, var(--c-overlay) 0%, var(--c-overlay) 34%, transparent 72%),
+        linear-gradient(to top, var(--c-overlay) 0%, transparent 40%);
+    }
+  }
+  /* Centred copy over a full photo (Contact): an even veil so text in the middle and at the
+     edges is backed equally, slightly lifted at the top where the photo shows through. Not
+     direction-dependent, so LTR and RTL match. */
+  .hero-scrim.hero-scrim--even,
+  [dir="rtl"] .hero-scrim.hero-scrim--even {
+    background:
+      radial-gradient(ellipse 70% 65% at 50% 52%, var(--c-overlay) 0%, transparent 100%),
+      linear-gradient(to bottom, color-mix(in oklab, var(--c-overlay) 70%, transparent), var(--c-overlay));
+  }
+
+  /* ---------- Photo pending (licensed photography not yet available) ---------- */
+  /* Fills its .frame at the final aspect ratio. Replace the element with an <img>
+     inside the same frame (see assets/images/CREDITS.md). */
+  .photo-pending {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--c-text-muted);
+    background:
+      radial-gradient(ellipse 40% 34% at 50% 40%, color-mix(in oklab, var(--c-honey) 26%, transparent), transparent 70%),
+      linear-gradient(165deg, var(--c-section-alt), var(--c-accent-soft));
+    border: 1px dashed var(--c-border-strong);
+    border-radius: inherit;
+  }
+  .photo-pending > svg { color: var(--c-accent); }
+  .photo-pending__label {
+    color: var(--c-text);              /* muted fell to 4.1:1 on the dark-theme gradient */
+    font-size: var(--text-caption);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .photo-pending__subject {
+    max-inline-size: 26ch;
+    font-family: var(--ff-accent);
+    font-style: italic;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    color: var(--c-ink);
+  }
+  [dir="rtl"] .photo-pending__label { letter-spacing: 0; text-transform: none; }
+
+  /* ---------- Journey timeline (numbered stages joined by a wick line) ---------- */
+  /* Vertical below lg (line along the inline-start), horizontal from lg. */
+  .timeline { display: grid; gap: 2.5rem; position: relative; }
+  .timeline > li { position: relative; display: grid; align-content: start; gap: 0.75rem; padding-inline-start: 4.5rem; }
+  .timeline > li::before {             /* the wick line between nodes */
+    content: "";
+    position: absolute;
+    inset-inline-start: 1.75rem;
+    inset-block: 3.5rem -2.5rem;
+    border-inline-start: 1px dashed var(--c-border-strong);
+  }
+  .timeline > li:last-child::before { display: none; }
+  .timeline-node {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    display: grid;
+    place-items: center;
+    inline-size: 3.5rem;
+    block-size: 3.5rem;
+    border-radius: var(--radius-pill);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    color: var(--c-accent);
+    box-shadow: var(--sh-soft);
+  }
+  @media (min-width: 64rem) {
+    .timeline { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
+    .timeline > li { padding-inline-start: 0; padding-block-start: 5.5rem; }
+    .timeline > li::before {
+      inset-inline: 4.5rem -1rem;
+      inset-block: 1.75rem auto;
+      border-inline-start: 0;
+      border-block-start: 1px dashed var(--c-border-strong);
+    }
+  }
+
+  /* ---------- Site header ---------- */
+  /* Fixed bar of exactly --header-h (border included). Transparent at the top of
+     the page; a translucent page-coloured surface + hairline once scrolled. */
+  .site-header {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 50;
+    block-size: var(--header-h);
+    border-block-end: 1px solid transparent;
+    transition: background-color 300ms var(--ease-soft), border-color 300ms var(--ease-soft);
+  }
+  .site-header[data-scrolled] {
+    background-color: color-mix(in oklab, var(--c-page) 90%, transparent);
+    border-block-end-color: var(--c-border);
+    -webkit-backdrop-filter: saturate(1.2) blur(12px);
+    backdrop-filter: saturate(1.2) blur(12px);
+  }
+
+  /* ---------- Navigation ---------- */
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem var(--nav-pad, 0.875rem); /* --nav-pad is tightened on the <ul> at lg only, where the bar is fullest */
+    border-radius: var(--radius-pill);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--c-text);
+    transition: color 200ms var(--ease-soft), background-color 200ms var(--ease-soft);
+  }
+  .nav-link:hover { color: var(--c-ink); background: var(--c-section); }
+  /* Current page = weight of an underline mark, not colour alone */
+  .nav-link:is([aria-current="page"], [data-current]) { color: var(--c-ink); }
+  .nav-link:is([aria-current="page"], [data-current])::after {
+    content: "";
+    position: absolute;
+    inset-inline: var(--nav-pad, 0.875rem);
+    inset-block-end: 0.15rem;
+    block-size: 2px;
+    border-radius: 2px;
+    background: var(--c-accent);
+  }
+
+  /* Links inside the Home dropdown and the mobile Home group */
+  .dropdown-link {
+    display: flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    padding-inline: 0.875rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    color: var(--c-text);
+    white-space: nowrap;
+    transition: color 200ms var(--ease-soft), background-color 200ms var(--ease-soft);
+  }
+  .dropdown-link:hover { color: var(--c-ink); background: var(--c-section); }
+  .dropdown-link[aria-current="page"] {
+    color: var(--c-ink);
+    text-decoration: underline 2px var(--c-accent);
+    text-underline-offset: 0.35em;
+  }
+
+  /* Top-level rows in the mobile menu */
+  .mobile-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-block-size: 4rem;
+    padding-block: 0.5rem;
+    font-family: var(--ff-display);
+    font-size: var(--text-h3);
+    line-height: 1.2;
+    color: var(--c-ink);
+    text-align: start;
+    transition: color 200ms var(--ease-soft);
+  }
+  .mobile-link:hover { color: var(--c-accent); }
+  .mobile-link:is([aria-current="page"], [data-current]) > span:nth-child(2) {
+    text-decoration: underline 2px var(--c-accent);
+    text-underline-offset: 0.3em;
+  }
+
+  /* ---------- Off-canvas (mobile menu) ---------- */
+  /* Sheet is anchored to the inline-START edge: slides in from the left in LTR and
+     from the right in RTL. Transforms are physical, so RTL flips the sign.
+     Visibility is delayed on close so the slide-out animation can play. */
+  .offcanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    visibility: hidden;
+    transition: visibility 0s linear 450ms;
+  }
+  .offcanvas[data-open] { visibility: visible; transition-delay: 0s; }
+
+  .offcanvas-backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--c-overlay);
+    opacity: 0;
+    transition: opacity 400ms var(--ease-soft);
+  }
+  .offcanvas[data-open] .offcanvas-backdrop { opacity: 1; }
+
+  .offcanvas-sheet {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: min(86vw, 26rem); /* leaves a tappable backdrop strip on phones */
+    display: flex;
+    flex-direction: column;
+    background: var(--c-page);
+    box-shadow: var(--sh-lift);
+    translate: -100% 0;
+    transition: translate 450ms var(--ease-soft);
+  }
+  [dir="rtl"] .offcanvas-sheet { translate: 100% 0; }
+  .offcanvas[data-open] .offcanvas-sheet { translate: 0 0; }
+
+  /* ---------- Footer ---------- */
+  .footer-heading {
+    font-family: var(--ff-sans);
+    font-size: var(--text-caption);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+  }
+  [dir="rtl"] .footer-heading { letter-spacing: 0; text-transform: none; font-size: var(--text-small); }
+
+  .footer-link {
+    display: inline-block;
+    padding-block: 0.125rem;
+    color: var(--c-text);
+    text-underline-offset: 0.25em;
+    transition: color 200ms var(--ease-soft);
+  }
+  .footer-link:hover { color: var(--c-accent); text-decoration: underline 1px; }
+
+  /* ---------- Divider ---------- */
+  .rule { block-size: 1px; background: var(--c-border); border: 0; }
+}

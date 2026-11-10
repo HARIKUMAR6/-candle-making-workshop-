@@ -1,0 +1,18 @@
+/* =========================================================================
+   EMBER & WICK — stylesheet entry (Tailwind CSS v4 CLI)
+   Build:  npm run build:css   →  assets/css/styles.css
+   ========================================================================= */
+
+@import "tailwindcss" source(none);
+@import "./tokens.css";
+@import "./theme.css";
+@import "./base.css";
+@import "./components.css";
+@import "./utilities.css";
+
+/* Scan only real sources: root-level pages and JS components that emit markup */
+@source "../../*.html";
+@source "../../assets/js";
+
+/* Theme variant for the rare case a utility must differ beyond tokens */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

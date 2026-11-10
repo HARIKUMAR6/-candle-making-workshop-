@@ -1,0 +1,154 @@
+/* =========================================================================
+   EMBER & WICK — DESIGN TOKENS
+   Raw semantic values. Themes swap these; Tailwind maps them in theme.css.
+   Contrast for every text/surface pair is verified (WCAG 2.2 AA) —
+   see docs/DESIGN-SYSTEM.md §3.
+   ========================================================================= */
+
+/* ---------- LIGHT (default) — "Beeswax & Linen" ---------- */
+:root {
+  color-scheme: light;
+
+  /* Backgrounds */
+  --c-page: #FBF7F0;            /* warm ivory — page canvas */
+  --c-section: #F4ECDF;         /* cream — alternating sections */
+  --c-section-alt: #EADDC8;     /* soft beige — feature bands */
+  --c-section-inverse: #2A1C13; /* deep brown — high-drama bands */
+  --c-surface: #FFFDF9;         /* cards, panels, fields */
+  --c-surface-raised: #FFFFFF;  /* menus, popovers */
+  --c-overlay: rgb(22 17 14 / 0.62); /* image scrims under text */
+
+  /* Text */
+  --c-ink: #2A1C13;             /* headings — 15.4:1 on page */
+  --c-text: #3B2B20;            /* body — 12.7:1 */
+  --c-text-muted: #6A5444;      /* secondary — 6.6:1 */
+  --c-text-inverse: #FBF7F0;    /* text on inverse/overlay */
+
+  /* Accents */
+  --c-accent: #9A4521;          /* ember terracotta — links, accent CTAs (6.1:1) */
+  --c-accent-hover: #7E3717;
+  --c-accent-soft: #F3E0CF;     /* tinted backgrounds, tags */
+  --c-on-accent: #FFF8EF;
+  --c-honey: #C98B2B;           /* flame / decorative only — never text */
+  --c-sage: #56654A;            /* secondary accent: botanicals, "beginner" (5.9:1) */
+  --c-sage-soft: #E3E6D8;
+
+  /* Borders */
+  --c-border: #E2D4BF;          /* hairlines, dividers (decorative) */
+  --c-border-strong: #8C7558;   /* form controls — ≥3:1 non-text contrast */
+
+  /* Buttons */
+  --c-btn-primary-bg: #2A1C13;
+  --c-btn-primary-fg: #FBF7F0;
+  --c-btn-primary-hover: #45301F;
+  --c-btn-secondary-bg: transparent;
+  --c-btn-secondary-fg: #2A1C13;
+  --c-btn-secondary-border: #2A1C13;
+  --c-btn-secondary-hover: #F4ECDF;
+
+  /* Form fields */
+  --c-field-bg: #FFFDF9;
+  --c-field-border: #8C7558;
+  --c-field-placeholder: #7A6352; /* 5.5:1 on field bg */
+  --c-field-focus: #9A4521;
+  --c-error: #A3261B;
+  --c-success: #3F6B3A;
+
+  /* Links & focus */
+  --c-link: #9A4521;
+  --c-link-hover: #7E3717;
+  --c-focus-ring: #9A4521;
+
+  /* Inverse bands (deep brown in light theme) — verified on --c-section-inverse */
+  --c-inverse-accent: #E3A25B;     /* 7.5:1 */
+  --c-inverse-on-accent: #1A120D;  /* button label on inverse accent, 8.4:1 */
+  --c-inverse-muted: #C9B8A3;      /* 8.5:1 */
+  --c-inverse-border: rgb(251 247 240 / 0.16);
+
+  /* Text placed on photography (always over --c-overlay, so identical in both themes) */
+  --c-on-image: #FBF7F0;
+  --c-on-image-accent: #EDB678;    /* amber accent word on photography (scrim-backed) */
+  --c-on-image-ink: #2A1C13;       /* label on the ivory on-image button, 15.4:1 */
+
+  /* Shadows (warm-tinted, never grey) */
+  --sh-soft: 0 1px 2px rgb(60 35 20 / 0.06), 0 8px 24px -12px rgb(60 35 20 / 0.18);
+  --sh-lift: 0 2px 4px rgb(60 35 20 / 0.06), 0 24px 48px -20px rgb(60 35 20 / 0.28);
+
+  /* Type families (RTL adds Arabic fallbacks below) */
+  --ff-brand: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif; /* wordmark — never swapped */
+  --ff-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --ff-accent: "Cormorant Garamond", "Garamond", Georgia, serif;
+  --ff-sans: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Layout */
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --header-h: 4.5rem;
+}
+
+/* ---------- DARK — "Candlelit Studio" ---------- */
+/* Explicit choice wins; otherwise follow the OS when no choice is stored. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --c-page: #16110E;            /* charcoal-chocolate */
+  --c-section: #1D1713;
+  --c-section-alt: #271E18;
+  --c-section-inverse: #F3E9DA; /* inverse bands flip to ivory */
+  --c-surface: #231B16;
+  --c-surface-raised: #2D231C;
+  --c-overlay: rgb(10 7 5 / 0.66);
+
+  --c-ink: #F6EEE1;             /* 16.3:1 */
+  --c-text: #EADFCD;            /* 14.2:1 */
+  --c-text-muted: #BCAA94;      /* 8.3:1 */
+  --c-text-inverse: #1D1713;
+
+  --c-accent: #E3A25B;          /* candlelight amber (8.6:1) */
+  --c-accent-hover: #EDB678;
+  --c-accent-soft: #3A2717;
+  --c-on-accent: #1A120D;
+  --c-honey: #E8B062;
+  --c-sage: #A9B794;
+  --c-sage-soft: #262B20;
+
+  --c-border: #382C23;
+  --c-border-strong: #857059;
+
+  --c-btn-primary-bg: #F3E9DA;
+  --c-btn-primary-fg: #1D1713;
+  --c-btn-primary-hover: #FFFFFF;
+  --c-btn-secondary-bg: transparent;
+  --c-btn-secondary-fg: #F6EEE1;
+  --c-btn-secondary-border: #F6EEE1;
+  --c-btn-secondary-hover: #271E18;
+
+  --c-field-bg: #231B16;
+  --c-field-border: #857059;
+  --c-field-placeholder: #A08D78;
+  --c-field-focus: #E3A25B;
+  --c-error: #F08A7E;
+  --c-success: #9CC48F;
+
+  --c-link: #E3A25B;
+  --c-link-hover: #EDB678;
+  --c-focus-ring: #E3A25B;
+
+  /* Inverse bands flip to ivory in dark theme — verified on #F3E9DA */
+  --c-inverse-accent: #9A4521;     /* 5.4:1 */
+  --c-inverse-on-accent: #FFF8EF;  /* 6.1:1 */
+  --c-inverse-muted: #6A5444;      /* 5.9:1 */
+  --c-inverse-border: rgb(29 23 19 / 0.16);
+
+  --sh-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+  --sh-lift: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 48px -20px rgb(0 0 0 / 0.65);
+}
+
+/* ---------- RTL typography ---------- */
+/* Font fallback is per glyph: Latin families stay first so English/numbers keep
+   the brand faces, and Arabic glyphs (absent from the Latin fonts' subsets) fall
+   through to purpose-built Arabic families. */
+:root[dir="rtl"] {
+  --ff-display: "Fraunces", "Amiri", "Times New Roman", serif;
+  --ff-accent: "Cormorant Garamond", "Amiri", serif;
+  --ff-sans: "Manrope", "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
+}

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · Ember &amp; Wick</title>
+  <meta name="description" content="About Ember & Wick: a candle-making studio built on handmade craft, patient teaching and hands-on workshops for every level.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <script src="assets/js/preferences.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Fraunces:opsz,wght@9..144,300..600&family=Manrope:wght@400..700&family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
+  <link rel="preload" as="image" type="image/webp" href="assets/images/about/three-wick-bowl-960.webp" imagesrcset="assets/images/about/three-wick-bowl-480.webp 480w, assets/images/about/three-wick-bowl-960.webp 960w, assets/images/about/three-wick-bowl-1440.webp 1440w, assets/images/about/three-wick-bowl-2048.webp 2048w" imagesizes="(min-width: 76rem) 710px, (min-width: 64rem) 56vw, 92vw" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body data-page="about">
+  <site-header></site-header>
+
+  <main id="main">
+
+    <!-- 01 · ABOUT HERO — copy and photograph both inside the shared shell (same sizing as Home 01's hero) -->
+    <section class="hero surface-page flex flex-col pt-header" aria-labelledby="hero-title">
+      <div class="shell flex flex-1 flex-col gap-6 pb-6 pt-4 lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8 lg:py-8">
+        <div class="lg:col-span-5">
+          <p class="eyebrow">About Ember &amp; Wick</p>
+          <h1 id="hero-title" class="hero-title mt-5">The <em class="accent-word">heart</em> behind each candle.</h1>
+          <p class="lead mt-6 max-w-[44ch]">A candle-making studio built on one idea: the best candles are made slowly, by hand — and shared.</p>
+          <div class="hero-actions mt-8">
+            <a href="workshops.html" class="btn btn-primary btn-lg">Explore workshops <svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="contact.html" class="btn btn-secondary btn-lg">Contact the studio</a>
+          </div>
+        </div>
+        <figure class="frame relative min-h-[var(--hero-media-min)] flex-1 lg:col-span-7 lg:col-start-6 lg:h-[calc(var(--hero-block)_-_var(--header-h)_-_4rem)] lg:flex-none lg:rounded-xl">
+          <img src="assets/images/about/three-wick-bowl-960.webp" srcset="assets/images/about/three-wick-bowl-480.webp 480w, assets/images/about/three-wick-bowl-960.webp 960w, assets/images/about/three-wick-bowl-1440.webp 1440w, assets/images/about/three-wick-bowl-2048.webp 2048w" sizes="(min-width: 76rem) 710px, (min-width: 64rem) 56vw, 92vw" width="960" height="720" alt="A three-wick candle burning in a hand-painted ceramic bowl" loading="eager" fetchpriority="high" decoding="async" class="img-graded absolute inset-0 size-full object-cover img-focus-[50%_58%]">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 02 · OUR STORY — wide statement, then image beside two columns of short text -->
+    <section class="surface-section section" aria-labelledby="story-title">
+      <div class="shell">
+        <p class="eyebrow">Our story</p>
+        <h2 id="story-title" class="mt-5 max-w-[22ch]">A candle you make yourself <em class="accent-word">feels</em> different when you light it.</h2>
+        <div class="mt-14 grid items-start gap-10 md:grid-cols-12 md:gap-8">
+          <figure class="frame aspect-portrait md:col-span-5 lg:col-span-4">
+            <img src="assets/images/about/dried-grass-niche-960.webp" srcset="assets/images/about/dried-grass-niche-480.webp 480w, assets/images/about/dried-grass-niche-960.webp 960w, assets/images/about/dried-grass-niche-1440.webp 1440w, assets/images/about/dried-grass-niche-2048.webp 2048w" sizes="(min-width: 48rem) 34vw, 92vw" width="960" height="720" alt="A small white vase of dried grasses in a softly lit wall niche" loading="lazy" decoding="async" class="img-graded img-focus-[50%_55%]">
+          </figure>
+          <div class="grid gap-8 md:col-span-7 lg:col-span-7 lg:col-start-6 lg:grid-cols-2 lg:gap-x-10 lg:pt-4">
+            <div>
+              <h3 class="text-h4 font-semibold text-ink">What we stand for</h3>
+              <p class="mt-3 text-muted">Handmade craftsmanship: wax, wick and scent, worked carefully by hand rather than in a hurry.</p>
+            </div>
+            <div>
+              <h3 class="text-h4 font-semibold text-ink">How we make</h3>
+              <p class="mt-3 text-muted">Patiently. We teach the way we work — showing each step, then giving you room to make it yours.</p>
+            </div>
+            <div>
+              <h3 class="text-h4 font-semibold text-ink">The idea behind the workshops</h3>
+              <p class="mt-3 text-muted">Beginners and experienced makers can share one bench, follow the same craft, and each make something entirely their own.</p>
+            </div>
+            <div>
+              <h3 class="text-h4 font-semibold text-ink">Why it matters</h3>
+              <p class="mt-3 text-muted">Because of the moment you light it: a small, warm thing that exists because you made it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · OUR APPROACH — triptych: craft notes flanking a central arch -->
+    <section class="surface-page section" aria-labelledby="approach-title">
+      <div class="shell">
+        <div class="mx-auto max-w-[40rem] text-center">
+          <p class="eyebrow justify-center">Our approach</p>
+          <h2 id="approach-title" class="mt-5">Five things every candle <em class="accent-word">deserves</em>.</h2>
+        </div>
+        <div class="mt-14 grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
+          <div class="grid gap-10 lg:col-span-4">
+            <div>
+              <p class="eyebrow">Materials &amp; preparation</p>
+              <p class="mt-3">Measured wax, a well-chosen wick and a clean vessel. Good candles start before anything melts.</p>
+            </div>
+            <div>
+              <p class="eyebrow">Fragrance</p>
+              <p class="mt-3">Time to explore notes on their own and together, until a blend feels right.</p>
+            </div>
+            <div>
+              <p class="eyebrow">Technique</p>
+              <p class="mt-3">Gentle heat, the right moment to add scent, and a steady pour — learned by doing, not watching.</p>
+            </div>
+          </div>
+          <figure class="frame frame-arch mx-auto aspect-[3/4] w-full max-w-[24rem] lg:col-span-4 lg:max-w-none">
+            <img src="assets/images/about/glass-vessel-960.webp" srcset="assets/images/about/glass-vessel-480.webp 480w, assets/images/about/glass-vessel-960.webp 960w, assets/images/about/glass-vessel-1440.webp 1440w, assets/images/about/glass-vessel-2048.webp 2048w" sizes="(min-width: 64rem) 30vw, 80vw" width="960" height="1280" alt="An empty, clear glass candle vessel with a black lid on linen" loading="lazy" decoding="async" class="img-graded img-focus-[50%_55%]">
+          </figure>
+          <div class="grid gap-10 lg:col-span-4">
+            <div>
+              <p class="eyebrow">Creative expression</p>
+              <p class="mt-3">Colour, layers and vessel are yours to decide. We’ll show you what’s possible.</p>
+            </div>
+            <div>
+              <p class="eyebrow">Finishing touches</p>
+              <p class="mt-3">Letting the wax set, trimming the wick and checking the surface: the quiet steps that make a candle burn well.</p>
+            </div>
+            <figure class="frame aspect-card">
+              <img src="assets/images/about/bottle-window-light-960.webp" srcset="assets/images/about/bottle-window-light-480.webp 480w, assets/images/about/bottle-window-light-960.webp 960w, assets/images/about/bottle-window-light-1440.webp 1440w, assets/images/about/bottle-window-light-2048.webp 2048w" sizes="(min-width: 64rem) 28vw, 92vw" width="960" height="1280" alt="A clear glass bottle catching daylight beside a window" loading="lazy" decoding="async" class="img-graded img-focus-[50%_45%]">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · THE STUDIO EXPERIENCE — inverse band; photograph and list share the shell grid.
+         lg: the photo stretches to the list's height (6/5 split); below lg it stacks at 3:2. -->
+    <section class="surface-inverse section" aria-labelledby="experience-title">
+      <div class="shell grid gap-10 lg:grid-cols-12 lg:gap-8">
+        <figure class="frame relative aspect-landscape lg:col-span-6 lg:aspect-auto lg:min-h-[30rem]">
+          <img src="assets/images/about/warm-room-960.webp" srcset="assets/images/about/warm-room-480.webp 480w, assets/images/about/warm-room-960.webp 960w, assets/images/about/warm-room-1440.webp 1440w, assets/images/about/warm-room-2048.webp 2048w" sizes="(min-width: 76rem) 600px, (min-width: 64rem) 48vw, 92vw" width="960" height="1281" alt="A warmly lit room with wooden shelves, framed pictures and armchairs" loading="lazy" decoding="async" class="img-graded absolute inset-0 size-full object-cover img-focus-[50%_55%]">
+        </figure>
+        <div class="lg:col-span-5 lg:col-start-8 lg:self-center">
+          <p class="eyebrow">The studio experience</p>
+          <h2 id="experience-title" class="mt-5">A room made for <em class="accent-word">making</em>.</h2>
+          <ul class="mt-10 grid gap-8">
+            <li class="grid grid-cols-[2.5rem_1fr] gap-x-4">
+              <svg class="text-accent" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M3.5 21h17"/><path d="M14.5 12h.01"/></svg>
+              <div><h3 class="text-h4 font-semibold">Welcoming from the start</h3><p class="mt-2 text-muted">No experience needed. You’ll be guided from the moment you sit down.</p></div>
+            </li>
+            <li class="grid grid-cols-[2.5rem_1fr] gap-x-4">
+              <svg class="text-accent" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 11.5v-7a1.5 1.5 0 0 1 3 0V12"/><path d="M14 6.5a1.5 1.5 0 0 1 3 0V13"/><path d="M17 9.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-4.6-2.2L4.6 15.6a1.5 1.5 0 0 1 2.3-1.9L8 15"/></svg>
+              <div><h3 class="text-h4 font-semibold">Hands-on throughout</h3><p class="mt-2 text-muted">You do the making yourself: measuring, melting, scenting and pouring.</p></div>
+            </li>
+            <li class="grid grid-cols-[2.5rem_1fr] gap-x-4">
+              <svg class="text-accent" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3h4"/><path d="M10.5 3v3.2a4 4 0 0 1-1.1 2.7A5 5 0 0 0 8 12.4V19a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-6.6a5 5 0 0 0-1.4-3.5 4 4 0 0 1-1.1-2.7V3"/><path d="M8 14h8"/></svg>
+              <div><h3 class="text-h4 font-semibold">Materials to explore</h3><p class="mt-2 text-muted">Time to compare waxes, smell fragrance notes and choose what feels right.</p></div>
+            </li>
+            <li class="grid grid-cols-[2.5rem_1fr] gap-x-4">
+              <svg class="text-accent" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c3.3 0 6-2.5 6-5.8 0-3.6-2.6-5.4-3.6-8.7-.3-1-1.7-1.1-2.1-.1C11.4 8.7 9.6 9.4 9 11c-.5-1-1.5-1.4-2.1-.6C6.3 11.3 6 12.5 6 15.2 6 18.5 8.7 21 12 21Z"/></svg>
+              <div><h3 class="text-h4 font-semibold">Something personal</h3><p class="mt-2 text-muted">A candle shaped by your own choices, from the scent to the vessel.</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · WHAT WE OFFER — asymmetric 7/5: workshops (with formats) | kits -->
+    <section class="surface-alt section" aria-labelledby="offer-title">
+      <div class="shell">
+        <p class="eyebrow">What we offer</p>
+        <h2 id="offer-title" class="mt-5">Two ways to <em class="accent-word">make</em> with us.</h2>
+        <div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div class="lg:col-span-7">
+            <h3>Candle-making workshops</h3>
+            <p class="mt-3 max-w-[52ch] text-muted">Hands-on sessions for every level — beginners are guided through each step; experienced makers can go further with technique and design.</p>
+            <ul class="mt-8 border-t border-line-strong">
+              <li class="border-b border-line-strong">
+                <a href="workshops.html#container-candles" class="group flex items-center justify-between gap-6 py-5">
+                  <span><span class="block font-display text-h4 text-ink group-hover:text-accent">Container candles</span><span class="mt-1 block text-small text-muted">Pour wax into a vessel you choose and set the wick.</span></span>
+                  <span class="shrink-0 text-accent"><svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </a>
+              </li>
+              <li class="border-b border-line-strong">
+                <a href="workshops.html#scent-blending" class="group flex items-center justify-between gap-6 py-5">
+                  <span><span class="block font-display text-h4 text-ink group-hover:text-accent">Scent blending</span><span class="mt-1 block text-small text-muted">Build a fragrance blend of your own and pour it.</span></span>
+                  <span class="shrink-0 text-accent"><svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </a>
+              </li>
+              <li class="border-b border-line-strong">
+                <a href="workshops.html#pillar-candles" class="group flex items-center justify-between gap-6 py-5">
+                  <span><span class="block font-display text-h4 text-ink group-hover:text-accent">Pillar &amp; decorative candles</span><span class="mt-1 block text-small text-muted">Moulds, layers and colour for freestanding candles.</span></span>
+                  <span class="shrink-0 text-accent"><svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </a>
+              </li>
+            </ul>
+            <a href="workshops.html" class="btn btn-primary mt-8">Explore workshops <svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="lg:col-span-4 lg:col-start-9">
+            <!-- Kit material stand-in, reused from Home 02 (verified, see CREDITS.md) -->
+            <figure>
+              <div class="frame aspect-card">
+                <img src="assets/images/kits/beeswax-blocks-960.webp" srcset="assets/images/kits/beeswax-blocks-480.webp 480w, assets/images/kits/beeswax-blocks-960.webp 960w, assets/images/kits/beeswax-blocks-1440.webp 1440w, assets/images/kits/beeswax-blocks-2048.webp 2048w" sizes="(min-width: 76rem) 400px, (min-width: 64rem) 32vw, 92vw" width="960" height="960" alt="Four bars of natural beeswax, a candle-making material, stacked on a dark stone worktop" loading="lazy" decoding="async" class="img-graded img-focus-[50%_55%]">
+              </div>
+              <figcaption class="meta mt-3 text-caption">Photo: <a href="https://commons.wikimedia.org/wiki/File:Pure_Natural_Beeswax_Blocks.jpg" class="underline underline-offset-2 hover:text-accent">Jack Soley</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="underline underline-offset-2 hover:text-accent">CC BY-SA 4.0</a></figcaption>
+            </figure>
+            <h3 class="mt-8">Candle-making kits</h3>
+            <p class="mt-3 text-muted">Bring the craft home: practise after a workshop, try it for the first time, or give it to someone who would love it.</p>
+            <a href="kits.html" class="btn btn-secondary mt-8">Discover our kits <svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · CLOSING CTA — horizontal signature row: round photo · headline · actions -->
+    <section class="surface-page section border-t border-line" aria-labelledby="close-title">
+      <div class="shell grid items-center gap-8 text-center lg:grid-cols-12 lg:gap-8 lg:text-start">
+        <figure class="mx-auto size-28 overflow-hidden rounded-pill border border-line shadow-soft lg:col-span-2 lg:mx-0 lg:size-36">
+          <img src="assets/images/about/red-jar-candle-960.webp" srcset="assets/images/about/red-jar-candle-480.webp 480w, assets/images/about/red-jar-candle-960.webp 960w, assets/images/about/red-jar-candle-1440.webp 1440w, assets/images/about/red-jar-candle-2048.webp 2048w" sizes="9rem" width="960" height="1280" alt="" loading="lazy" decoding="async" class="img-graded size-full object-cover img-focus-[50%_45%]">
+        </figure>
+        <div class="lg:col-span-6">
+          <h2 id="close-title">Light the first one <em class="accent-word">with us</em>.</h2>
+          <p class="mx-auto mt-4 max-w-[46ch] text-muted lg:mx-0">Find a workshop that suits you, or ask us anything first — we’re glad to help you choose.</p>
+        </div>
+        <div class="hero-actions lg:col-span-4 lg:flex-col lg:items-stretch">
+          <a href="workshops.html" class="btn btn-primary btn-lg">Explore workshops <svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="contact.html" class="btn btn-secondary btn-lg">Contact the studio</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <site-footer data-invitation="off"></site-footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+/* =========================================================================
+   TAILWIND THEME — maps semantic tokens to utilities.
+   The default palette is removed so only brand tokens can be used.
+   `inline` makes utilities reference the live CSS variables, so the
+   theme/dir switch needs no rebuild and no `dark:` variants for colour.
+   ========================================================================= */
+
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-page: var(--c-page);
+  --color-section: var(--c-section);
+  --color-section-alt: var(--c-section-alt);
+  --color-inverse: var(--c-section-inverse);
+  --color-surface: var(--c-surface);
+  --color-surface-raised: var(--c-surface-raised);
+  --color-overlay: var(--c-overlay);
+
+  --color-ink: var(--c-ink);
+  --color-text: var(--c-text);
+  --color-muted: var(--c-text-muted);
+  --color-on-inverse: var(--c-text-inverse);
+
+  --color-accent: var(--c-accent);
+  --color-accent-hover: var(--c-accent-hover);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-on-accent: var(--c-on-accent);
+  --color-honey: var(--c-honey);
+  --color-sage: var(--c-sage);
+  --color-sage-soft: var(--c-sage-soft);
+
+  --color-on-image: var(--c-on-image);
+  --color-line: var(--c-border);
+  --color-line-strong: var(--c-border-strong);
+  --color-error: var(--c-error);
+  --color-success: var(--c-success);
+
+  --font-brand: var(--ff-brand);
+  --font-display: var(--ff-display);
+  --font-accent: var(--ff-accent);
+  --font-sans: var(--ff-sans);
+
+  --shadow-soft: var(--sh-soft);
+  --shadow-lift: var(--sh-lift);
+}
+
+@theme static {
+  /* ---- Breakpoints (mobile-first, min-width) ---- */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 36rem;   /*  576px  large phones / phablets   */
+  --breakpoint-md: 48rem;   /*  768px  tablet portrait           */
+  --breakpoint-lg: 64rem;   /* 1024px  tablet landscape / laptop */
+  --breakpoint-xl: 80rem;   /* 1280px  laptop / desktop          */
+  --breakpoint-2xl: 96rem;  /* 1536px  large desktop             */
+
+  /* ---- Containers (max inline size) ---- */
+  --container-prose: 40rem;  /* 640px  — long-form reading     */
+  --container-narrow: 52rem; /* 832px  — forms, focused content */
+  --container-site: 76rem;   /* 1216px — default page shell    */
+  --container-wide: 90rem;   /* 1440px — editorial full-bleed  */
+
+  /* ---- Fluid type scale (min @ 360px → max @ 1440px) ---- */
+  --text-display: clamp(2.75rem, 1.6rem + 5.1vw, 6.25rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.025em;
+  --text-h1: clamp(2.25rem, 1.5rem + 3.4vw, 4.5rem);
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h2: clamp(1.875rem, 1.35rem + 2.3vw, 3.25rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h3: clamp(1.375rem, 1.15rem + 1vw, 2rem);
+  --text-h3--line-height: 1.2;
+  --text-h4: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+  --text-h4--line-height: 1.3;
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  --text-lead--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.7;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.55;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.4;
+
+  /* ---- Spacing additions (base 0.25rem scale is kept) ---- */
+  --spacing-gutter: var(--gutter);
+  --spacing-section: clamp(4rem, 2.8rem + 5.3vw, 8rem);
+  --spacing-section-sm: clamp(3rem, 2.3rem + 3vw, 5rem);
+  --spacing-stack: clamp(1.5rem, 1.2rem + 1.3vw, 2.5rem);
+  --spacing-header: var(--header-h);
+
+  /* ---- Radius ---- */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.375rem;
+  --radius-xl: 2rem;
+  --radius-pill: 999px;
+
+  /* ---- Aspect ratios for the image system ---- */
+  --aspect-portrait: 4 / 5;
+  --aspect-tall: 2 / 3;
+  --aspect-landscape: 3 / 2;
+  --aspect-card: 4 / 3;
+  --aspect-cinema: 21 / 9;
+
+  /* ---- Motion ---- */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-flame: cubic-bezier(0.65, 0, 0.35, 1);
+}

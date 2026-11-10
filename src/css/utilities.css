@@ -1,0 +1,56 @@
+/* =========================================================================
+   CUSTOM UTILITIES — work with all Tailwind variants (hover:, md:, rtl: …)
+   ========================================================================= */
+
+/* Mirror directional icons (arrows, chevrons) in RTL. Never use on logos, clocks, play icons. */
+@utility flip-rtl {
+  &:where([dir="rtl"], [dir="rtl"] *) { scale: -1 1; }
+}
+
+/* Visually hidden but available to assistive tech */
+@utility sr-only-focusable {
+  &:not(:focus):not(:focus-within) {
+    position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap;
+  }
+}
+
+/* Image focus point, e.g. img-focus-[30%_60%] → keeps the flame in-frame on crops */
+@utility img-focus-* {
+  --focus: --value([*]);
+}
+
+/* Section surfaces as one class (bg + matching text) */
+@utility surface-page    { background-color: var(--c-page);    color: var(--c-text); }
+@utility surface-section { background-color: var(--c-section); color: var(--c-text); }
+@utility surface-alt     { background-color: var(--c-section-alt); color: var(--c-text); }
+/* Inverse band: deep brown in light theme, ivory in dark theme. Components placed
+   inside are re-coloured from the --c-inverse-* tokens (all verified ≥ 5.3:1). */
+@utility surface-inverse {
+  background-color: var(--c-section-inverse);
+  color: var(--c-text-inverse);
+  & :is(h1, h2, h3, h4) { color: var(--c-text-inverse); }
+  & :is(.eyebrow, .meta, .footer-heading) { color: var(--c-inverse-muted); }
+  & .accent-word, & .text-accent { color: var(--c-inverse-accent); }
+  & .text-muted { color: var(--c-inverse-muted); }
+  & .border-line, & .rule { border-color: var(--c-inverse-border); }
+  & .btn-primary, & .btn-accent { background: var(--c-inverse-accent); color: var(--c-inverse-on-accent); }
+  & .btn-primary:hover, & .btn-accent:hover { background: color-mix(in oklab, var(--c-inverse-accent) 86%, var(--c-text-inverse)); }
+  & .btn-secondary { color: var(--c-text-inverse); border-color: currentColor; }
+  & .btn-secondary:hover { background: color-mix(in oklab, var(--c-text-inverse) 10%, transparent); }
+  & .link-arrow { color: var(--c-text-inverse); }
+  & .link-arrow:hover { color: var(--c-inverse-accent); }
+  & :focus-visible { outline-color: var(--c-inverse-accent); }
+}
+
+/* Text set directly on photography (always above a scrim) */
+@utility on-image {
+  color: var(--c-on-image);
+  & :is(h1, h2, h3, h4, .eyebrow, .meta, .lead) { color: var(--c-on-image); }
+  & .accent-word { color: var(--c-on-image-accent); }
+  & .btn-secondary { color: var(--c-on-image); border-color: currentColor; }
+  & .btn-secondary:hover { background: color-mix(in oklab, var(--c-on-image) 12%, transparent); }
+  & .link-arrow { color: var(--c-on-image); }
+  & .link-arrow:hover { color: var(--c-on-image-accent); }
+  & :focus-visible { outline-color: var(--c-on-image); }
+}

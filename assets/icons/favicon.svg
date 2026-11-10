@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg { fill: #FBF7F0; } .flame { fill: none; stroke: #9A4521; }
+    @media (prefers-color-scheme: dark) { .bg { fill: #16110E; } .flame { stroke: #E3A25B; } }
+  </style>
+  <rect class="bg" width="32" height="32" rx="8"/>
+  <g class="flame" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(4 3)">
+    <path d="M12 23c3.6 0 6.5-2.7 6.5-6.3 0-3.9-2.8-5.8-3.9-9.4-.3-1.1-1.8-1.2-2.3-.1-1.1 2.4-3 3.2-3.7 4.9-.5-1.1-1.6-1.5-2.3-.6-.7 1-1 2.3-1 5.2C5.5 20.3 8.4 23 12 23Z"/>
+    <path d="M12 23c-1.5 0-2.7-1.2-2.7-2.8 0-1.8 1.5-2.6 2.3-4.2.2-.4.8-.4 1 0 .8 1.6 2.1 2.4 2.1 4.2 0 1.6-1.2 2.8-2.7 2.8Z"/>
+  </g>
+</svg>

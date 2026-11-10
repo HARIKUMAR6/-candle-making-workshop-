@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Style Guide · Ember &amp; Wick</title>
+  <meta name="description" content="Living design system reference for Ember & Wick — tokens, type, components and image frames.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <script src="assets/js/preferences.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Fraunces:opsz,wght@9..144,300..600&family=Manrope:wght@400..700&family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Style-guide-only stand-in for photography inside frame specimens */
+    .sg-specimen {
+      background:
+        radial-gradient(ellipse 6% 9% at 50% 40%, var(--c-honey), transparent),
+        radial-gradient(circle at 50% 42%, color-mix(in oklab, var(--c-honey) 35%, transparent), transparent 38%),
+        linear-gradient(165deg, var(--c-section-alt), var(--c-accent-soft));
+    }
+  </style>
+  <script type="module" src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/pages/styleguide.js"></script>
+</head>
+<body data-page="styleguide">
+  <site-header></site-header>
+
+  <main id="main" class="pt-header">
+    <!-- Intro -->
+    <section class="section-sm shell">
+      <p class="eyebrow">Design system · v0.1 · Phase 01</p>
+      <h1 class="text-display-role mt-6 max-w-[14ch]">Warm light, <em class="accent-word">honest</em> materials.</h1>
+      <p class="lead mt-6 max-w-[56ch]">The living reference for Ember &amp; Wick. Every value below reads from the same tokens the site uses. Switch the theme or direction in the header to check both.</p>
+    </section>
+
+    <!-- Colour -->
+    <section class="surface-section section-sm" aria-labelledby="sg-colour">
+      <div class="shell">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <h2 id="sg-colour">Colour tokens</h2>
+          <p class="meta">Live values for the current theme.</p>
+        </div>
+        <div class="mt-10 grid gap-10 lg:grid-cols-3">
+          <div>
+            <h3 class="eyebrow">Surfaces</h3>
+            <ul class="mt-4 grid gap-2" data-swatches="page section section-alt section-inverse surface surface-raised"></ul>
+          </div>
+          <div>
+            <h3 class="eyebrow">Text &amp; lines</h3>
+            <ul class="mt-4 grid gap-2" data-swatches="ink text text-muted border border-strong field-placeholder"></ul>
+          </div>
+          <div>
+            <h3 class="eyebrow">Accents &amp; states</h3>
+            <ul class="mt-4 grid gap-2" data-swatches="accent accent-hover accent-soft honey sage error"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Type -->
+    <section class="section-sm shell" aria-labelledby="sg-type">
+      <h2 id="sg-type">Typography</h2>
+      <div class="mt-10 grid gap-8 divide-y divide-line">
+        <div class="grid gap-3 md:grid-cols-[12rem_1fr] md:items-baseline">
+          <p class="meta">Display · Fraunces 350</p>
+          <p class="text-display-role">Poured by hand</p>
+        </div>
+        <div class="grid gap-3 pt-8 md:grid-cols-[12rem_1fr] md:items-baseline">
+          <p class="meta">H1 · Fraunces 400</p>
+          <p class="font-display text-h1 text-ink">Workshops for curious hands</p>
+        </div>
+        <div class="grid gap-3 pt-8 md:grid-cols-[12rem_1fr] md:items-baseline">
+          <p class="meta">H2 + accent · Cormorant italic</p>
+          <p class="font-display text-h2 text-ink">From wax to <em class="accent-word">warm glow</em></p>
+        </div>
+        <div class="grid gap-3 pt-8 md:grid-cols-[12rem_1fr] md:items-baseline">
+          <p class="meta">H3 · Fraunces 400</p>
+          <p class="font-display text-h3 text-ink">Soy &amp; beeswax container candles</p>
+        </div>
+        <div class="grid gap-3 pt-8 md:grid-cols-[12rem_1fr] md:items-baseline">
+          <p class="meta">H4 · Manrope 600</p>
+          <p class="text-h4 font-semibold text-ink">What's included in your kit</p>
+        </div>
+        <div class="grid gap-3 pt-8 md:grid-cols-[12rem_1fr] md:items-baseline">
+          <p class="meta">Lead · Manrope 400</p>
+          <p class="lead max-w-[60ch]">Two unhurried hours at the pouring bench. You choose the vessel, blend the scent and leave with three candles curing in a box.</p>
+        </div>
+        <div class="grid gap-3 pt-8 md:grid-cols-[12rem_1fr] md:items-baseline">
+          <p class="meta">Body · Manrope 400 / 1.7</p>
+          <p class="max-w-[65ch]">Wax is melted slowly to 85°C, fragrance is folded in at the right temperature so it binds, and the wick is centred before the pour. Each step is shown, then practised, so beginners and returning makers move at their own pace.</p>
+        </div>
+        <div class="grid gap-3 pt-8 md:grid-cols-[12rem_1fr] md:items-baseline">
+          <p class="meta">Eyebrow · Small · Caption</p>
+          <div class="grid gap-3">
+            <p class="eyebrow">Saturday sessions</p>
+            <p class="text-small text-muted">Small text — supporting details, form hints, metadata.</p>
+            <p class="text-caption text-muted">CAPTION — 12px, used sparingly for labels and credits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components -->
+    <section class="surface-section section-sm" aria-labelledby="sg-components">
+      <div class="shell">
+        <h2 id="sg-components">Components</h2>
+
+        <div class="mt-10 grid gap-12 lg:grid-cols-2">
+          <div>
+            <h3 class="eyebrow">Buttons</h3>
+            <div class="mt-5 flex flex-wrap items-center gap-3">
+              <a href="#" class="btn btn-primary">Book a workshop</a>
+              <a href="#" class="btn btn-accent">Shop kits
+                <svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a href="#" class="btn btn-secondary">View schedule</a>
+              <button class="btn btn-primary btn-sm" type="button">Small</button>
+              <button class="btn btn-primary" type="button" disabled>Sold out</button>
+            </div>
+
+            <h3 class="eyebrow mt-10">Links &amp; tags</h3>
+            <div class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a href="#" class="link">Inline text link</a>
+              <a href="#" class="link-arrow">Explore the studio
+                <svg class="flip-rtl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="tag">Bestseller</span>
+              <span class="tag tag-sage">Beginner friendly</span>
+              <span class="tag tag-outline">2 hours</span>
+            </div>
+          </div>
+
+          <form class="grid gap-5 rounded-lg border border-line bg-surface p-6 md:p-8" novalidate onsubmit="return false">
+            <h3 class="eyebrow">Form fields</h3>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="field">
+                <label class="field-label" for="sg-name">Full name</label>
+                <input class="input" id="sg-name" type="text" placeholder="Ada Lovelace" autocomplete="name">
+              </div>
+              <div class="field">
+                <label class="field-label" for="sg-session">Session</label>
+                <select class="select" id="sg-session">
+                  <option>Container candles</option>
+                  <option>Pillar &amp; taper</option>
+                  <option>Scent blending</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="sg-email">Email</label>
+              <input class="input" id="sg-email" type="email" value="ada@" aria-invalid="true" aria-describedby="sg-email-err">
+              <p class="field-error" id="sg-email-err">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>
+                Enter a full email address, like name@example.com
+              </p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="sg-note">Anything we should know?</label>
+              <textarea class="textarea" id="sg-note" placeholder="Allergies, accessibility needs, a celebration…"></textarea>
+              <p class="field-hint">Optional. We read every note before your session.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image frames -->
+    <section class="section-sm shell" aria-labelledby="sg-frames">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h2 id="sg-frames">Image frames</h2>
+        <p class="meta max-w-[48ch]">Frame specimens only. Real photography is added per page in Phase 02 (see image direction in the docs).</p>
+      </div>
+      <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+        <figure>
+          <div class="frame frame-arch aspect-portrait sg-specimen"></div>
+          <figcaption class="meta mt-3"><strong class="text-ink">Arch · 4:5</strong><br>Signature: hero product, founder</figcaption>
+        </figure>
+        <figure>
+          <div class="frame aspect-portrait sg-specimen"></div>
+          <figcaption class="meta mt-3"><strong class="text-ink">Portrait · 4:5</strong><br>Kits, product detail</figcaption>
+        </figure>
+        <figure>
+          <div class="frame frame-notch aspect-card sg-specimen"></div>
+          <figcaption class="meta mt-3"><strong class="text-ink">Notch · 4:3</strong><br>Workshop sessions</figcaption>
+        </figure>
+        <figure>
+          <div class="frame aspect-square rounded-pill sg-specimen"></div>
+          <figcaption class="meta mt-3"><strong class="text-ink">Circle · 1:1</strong><br>Macro: wick, wax, scent</figcaption>
+        </figure>
+        <figure class="col-span-2 md:col-span-4">
+          <div class="frame frame-scrim aspect-landscape md:aspect-cinema sg-specimen">
+            <figcaption class="frame-caption">
+              <p class="text-caption font-bold uppercase tracking-[0.18em] opacity-80">Cinema · 21:9 → 3:2 on mobile · with scrim</p>
+              <p class="mt-2 font-display text-h3" style="color:inherit">Text on images always sits on a scrim.</p>
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Layout -->
+    <section class="surface-section section-sm" aria-labelledby="sg-layout">
+      <div class="shell">
+        <h2 id="sg-layout">Layout &amp; breakpoints</h2>
+        <div class="mt-8 grid gap-3">
+          <div class="rounded-sm bg-accent-soft px-4 py-3 text-small text-accent"><strong>.shell-prose</strong> · 640px — articles, long reading</div>
+          <div class="rounded-sm bg-accent-soft px-4 py-3 text-small text-accent"><strong>.shell-narrow</strong> · 832px — forms, focused content</div>
+          <div class="rounded-sm bg-accent-soft px-4 py-3 text-small text-accent"><strong>.shell</strong> · 1216px — default</div>
+          <div class="rounded-sm bg-accent-soft px-4 py-3 text-small text-accent"><strong>.shell-wide</strong> · 1440px — editorial, full-bleed imagery</div>
+        </div>
+        <p class="meta mt-6">Current breakpoint:
+          <strong class="text-ink sm:hidden">base (&lt;576)</strong>
+          <strong class="hidden text-ink sm:inline md:hidden">sm (≥576)</strong>
+          <strong class="hidden text-ink md:inline lg:hidden">md · tablet (≥768)</strong>
+          <strong class="hidden text-ink lg:inline xl:hidden">lg · laptop (≥1024)</strong>
+          <strong class="hidden text-ink xl:inline 2xl:hidden">xl · desktop (≥1280)</strong>
+          <strong class="hidden text-ink 2xl:inline">2xl (≥1536)</strong>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+</body>
+</html>
