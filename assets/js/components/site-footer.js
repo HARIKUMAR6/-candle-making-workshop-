@@ -1,15 +1,15 @@
-// <site-footer> — shared footer. Content comes from data/site.js; logo and
-// preference controls come from partials.js (same markup as the header).
+// <site-footer> — shared footer. Content comes from data/site.js; the logo comes from
+// partials.js (same markup as the header). Theme and direction controls are header-only.
 //
 // Layout (shared .shell so edges align with header/main):
 //   base: brand · Studio | Workshops & kits (2 cols) · Visit
-//   md:   brand full row, then Studio | Workshops & kits | Visit
+//   md:   brand | Visit (row 1), then Studio | Workshops & kits (row 2) — keeps the email on one line
 //   lg:   brand 4 | Studio 2 | Workshops & kits 2 | Visit 3 (12-col grid)
 // Every value comes from data/site.js, so the footer never disagrees with the Contact page.
 
 import { brand, contact, nav, primaryCta, social, workshopFormats } from '../data/site.js';
 import { icons } from './icons.js';
-import { logo, themeToggle, dirToggle } from './partials.js';
+import { logo } from './partials.js';
 
 const pages = nav.flatMap((i) => i.children ?? [i]);
 const page = (id) => pages.find((p) => p.id === id);
@@ -47,8 +47,8 @@ const template = (year, { withInvitation = true } = {}) => `
       ${withInvitation ? invitation() : ''}
 
       <!-- Brand + social · Studio · Workshops & kits · Visit -->
-      <div class="grid grid-cols-2 gap-x-8 gap-y-12 py-14 md:grid-cols-3 lg:grid-cols-12">
-        <div class="col-span-2 md:col-span-3 lg:col-span-4">
+      <div class="grid grid-cols-2 gap-x-8 gap-y-12 py-14 lg:grid-cols-12">
+        <div class="col-span-2 md:col-span-1 lg:col-span-4">
           ${logo({ href: 'index.html' })}
           <p class="meta mt-5 max-w-[42ch]">${brand.intro}</p>
           <div class="mt-7">
@@ -62,7 +62,7 @@ const template = (year, { withInvitation = true } = {}) => `
           </div>
         </div>
 
-        <nav aria-labelledby="footer-studio" class="lg:col-span-2 lg:col-start-6">
+        <nav aria-labelledby="footer-studio" class="lg:col-span-2 lg:col-start-6 lg:row-start-1">
           <h2 id="footer-studio" class="footer-heading">Studio</h2>
           ${linkList(studioLinks)}
         </nav>
@@ -72,22 +72,22 @@ const template = (year, { withInvitation = true } = {}) => `
           ${linkList(makeLinks)}
         </nav>
 
-        <div class="col-span-2 md:col-span-1 lg:col-span-3 lg:col-start-10">
+        <div class="col-span-2 md:col-span-1 md:col-start-2 md:row-start-1 lg:col-span-3 lg:col-start-10">
           <h2 class="footer-heading">Visit &amp; contact</h2>
           <div class="mt-5 grid gap-4">
             ${address}
             <a href="mailto:${brand.email}" class="footer-link inline-flex items-center gap-2.5 justify-self-start">
-              ${icons.mail({ size: 18, cls: 'shrink-0 text-accent' })}<span class="bidi-ltr break-all">${brand.email}</span>
+              ${icons.mail({ size: 18, cls: 'shrink-0 text-accent' })}<span class="bidi-ltr break-words">${brand.email}</span>
             </a>
             <a href="contact.html#enquiry" class="link-arrow justify-self-start">Send an enquiry ${icons.arrowEnd({ size: 16 })}</a>
           </div>
         </div>
       </div>
 
-      <!-- Legal · preferences -->
-      <div class="flex flex-col-reverse gap-4 border-t border-line py-6 sm:flex-row sm:items-center sm:justify-between">
-        <p class="text-small text-muted">© ${year} ${brand.name}. All rights reserved. Hand-poured, small-batch.</p>
-        <div class="flex items-center gap-2">${dirToggle()}${themeToggle()}</div>
+      <!-- Legal. (Theme + direction controls live in the header only.) The end padding on
+           narrow screens keeps the copyright clear of the floating scroll-to-top button. -->
+      <div class="border-t border-line py-6">
+        <p class="text-small text-muted pe-16 sm:pe-0">© ${year} ${brand.name}. All rights reserved. Hand-poured, small-batch.</p>
       </div>
     </div>
   </footer>`;

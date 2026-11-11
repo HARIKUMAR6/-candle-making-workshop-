@@ -8,9 +8,13 @@
 // popover:   closes on outside click, Tab-out, Escape and link selection.
 //            ArrowDown/ArrowUp on the button open it and focus the first/last link;
 //            inside, arrows cycle and Home/End jump.
-// accordion: toggles in place (used inside the mobile sheet); Escape is left to the sheet.
+// accordion: toggles in place (used inside the mobile sheet). Opens only on an explicit click/tap.
+//            Collapses on a second click, Escape (the sheet itself only closes on Escape when
+//            nothing is expanded), a click elsewhere, or Tab moving focus out of it.
 //
 // Native semantics are kept: a real <button>, real links, aria-expanded/aria-controls only.
+// Returns { isOpen, open, close } so the owner (the header) can reset it, e.g. when the
+// mobile menu opens or closes.
 
 export function initDisclosure(root, { signal } = {}) {
   const button = root.querySelector(':scope > button[aria-controls]');
@@ -31,8 +35,30 @@ export function initDisclosure(root, { signal } = {}) {
 
   set(isOpen()); // normalise initial state from markup
   button.addEventListener('click', () => set(!isOpen()), { signal });
+  const api = { isOpen, open: () => set(true), close: () => set(false) };
 
-  if (!popover) return;
+  if (!popover) {
+    // Escape collapses the section first; stopping it here keeps the sheet open until
+    // nothing is expanded (a second Escape then closes the sheet).
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) { e.preventDefault(); e.stopPropagation(); set(false); button.focus(); }
+    }, { signal });
+
+    // Tab / Shift+Tab leaving the section closes it. Keyboard only: a mouse or touch press on
+    // a link below also moves focus, and collapsing then would shift the layout before the
+    // click lands and swallow the tap. `viaKeyboard` is cleared after every focus change.
+    let viaKeyboard = false;
+    root.addEventListener('keydown', (e) => { if (e.key === 'Tab') viaKeyboard = true; }, { signal });
+    root.addEventListener('focusout', (e) => {
+      if (viaKeyboard && e.relatedTarget && !root.contains(e.relatedTarget)) set(false);
+      viaKeyboard = false;
+    }, { signal });
+
+    // A click/tap elsewhere closes it. `click`, not `pointerdown`: links below shift up when
+    // this collapses, and that must not happen before the link they were aimed at has fired.
+    document.addEventListener('click', (e) => { if (isOpen() && !root.contains(e.target)) set(false); }, { signal });
+    return api;
+  }
 
   button.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
@@ -63,4 +89,5 @@ export function initDisclosure(root, { signal } = {}) {
 
   // Click anywhere else closes it.
   document.addEventListener('pointerdown', (e) => { if (isOpen() && !root.contains(e.target)) set(false); }, { signal });
+  return api;
 }

@@ -60,6 +60,20 @@ The About page uses only the brand facts above. **Not stated** (add these if the
 - private sessions
 - awards
 
+## 1d. Workshops & Kits pages (Phase 05)
+
+Both pages use only facts already on the site: the three workshop formats (#1), "professional and beginner-friendly" (from the brief), and kits described by purpose (#3). **Nothing below is stated anywhere.** The pages say so plainly where a visitor would expect it.
+
+| # | Item | Where it appears | Current wording | Needed |
+|---|---|---|---|---|
+| W1 | Workshop duration, price, schedule, dates, availability | Workshops · Explore, Book | Not shown. The booking section explains the enquiry → reply → confirmation flow, and says an enquiry isn't a booking. | Real details per format, if the business wants them published |
+| W2 | **Age guidance, group sizes, accessibility** | Workshops · Who can join | A visible notice: "will be published here once confirmed" + "ask us before you book". | The studio's policy for each |
+| W3 | What's included in a workshop (materials, take-home, refreshments) | Workshops | Not stated. "You'll create" lines describe the craft outcome only. | Confirmed inclusions |
+| K1 | **Individual kits in the range** (names, variants) | Kits · Explore | Presented as three *uses* (after a workshop, a first candle, making with someone), plus "The individual kits in the range will be listed here once confirmed." | The real kit list |
+| K2 | **Kit contents** | Kits · What's inside | An overview of candle-making essentials (wax, wick, vessel, fragrance) with a notice: "This is an overview, not a contents list." | The exact contents per kit |
+| K3 | Kit prices, stock, purchase / delivery, gift packaging | Kits | Not shown. There are no buy buttons, prices, stock indicators or checkout. Every kit CTA leads to a kit enquiry (`contact.html?enquiry=kits`). | How kits are sold (enquiry only, or a shop/checkout later) |
+| K4 | Kit photography | Kits (all images) | Openly licensed stand-ins showing materials and candles. Never presented as the product. | Photos of the real kit |
+
 ## 2. Needed later (not used yet)
 
 - Real customer testimonials, with written permission. Neither homepage has a testimonial section; a community and atmosphere section is used instead.

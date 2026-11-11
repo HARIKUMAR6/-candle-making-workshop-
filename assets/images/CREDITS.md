@@ -107,6 +107,52 @@ Rejected during these passes:
 - `Hands (Unsplash)` (CC0): a finished, labelled jar candle, which doesn't show kit materials.
 - `Ukrainian Candle Easter Egg Painting - 3` (CC BY 4.0): a large, legible unrelated poster fills the background.
 
+## Workshops & Kits pages (Phase 05)
+
+There are 18 new files, none used on any other page, and none repeats within or between these two pages.
+- **17 from Wikimedia Commons, verified 2026-11-10:**
+  - the Commons API gave the licence, its URL and the author
+  - each file page was then fetched and confirmed to carry the same licence link (or a public-domain statement)
+- **1 from the WordPress Photo Directory (CC0):** its photo page carried the "CC0 licensed photo by …" block.
+
+Rules:
+- **Allowed licences:** CC0, Public Domain, CC BY and CC BY-SA only. NonCommercial and NoDerivatives licences were excluded at search time.
+- **Credits:** every CC BY / CC BY-SA photo has a visible on-page credit, "Photo: Author, Licence", linking to the file page and the licence deed. On the Workshops hero, the credit is a small chip on the photo.
+- **ShareAlike:** CC BY-SA files are resized adaptations (WebP), distributed under the same licence.
+- **Metadata:** EXIF and GPS were dropped on re-encoding.
+- **Crops:** CSS crops (`scale`/`object-position`) remove incidental print or objects from three photos (Workshops "Pillar & decorative", Kits hero, Kits "own pace"). The files themselves are unaltered apart from resizing.
+
+| Files (WebP widths) | Used in | Author | Source | Licence | Attribution | Original |
+|---|---|---|---|---|---|---|
+| `workshops/hands-decorating-candle-{480,960,1440,2048}.webp` | Workshops · Hero | [AlejandroLinaresGarcia](https://commons.wikimedia.org/wiki/User:AlejandroLinaresGarcia) | [file page](https://commons.wikimedia.org/wiki/File:ExpoIndigenous2015_046.JPG) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) ✔ | on-page credit | 6016×4000 |
+| `workshops/soy-tealights-tins-{480,960,1440,2048}.webp` | Workshops · Explore — Container candles | lindsay.dee.bunny | [file page](https://commons.wikimedia.org/wiki/File:Soy_tealight_candles.jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) ✔ | on-page credit | 3504×2336 |
+| `workshops/perfume-bottle-{480,960,1440,2048}.webp` | Workshops · Explore — Scent blending (arch) | [Carlos Moreno](https://wordpress.org/photos/author/morenoca3/) | [photo page](https://wordpress.org/photos/photo/7936ae1623/) | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) ✔ | not required | 3629×4838 |
+| `workshops/rolled-beeswax-candle-{480,960,1440,2048}.webp` | Workshops · Explore — Pillar & decorative | Paolo Neo | [file page](https://commons.wikimedia.org/wiki/File:Yellow_wax_candle.jpg) | Public domain ✔ | not required | 2048×1536 |
+| `workshops/wick-flame-closeup-{480,960,1440,2048}.webp` | Workshops · Experience detail | [Kreuzschnabel](https://commons.wikimedia.org/wiki/User:Kreuzschnabel) | [file page](https://commons.wikimedia.org/wiki/File:Candle_wick_and_flame_closeup.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) ✔ | on-page credit | 2660×1995 |
+| `workshops/pillar-glow-maker-{480,960,1440,2048}.webp` | Workshops · Experience (4:5) | [Clive Varley from Blackpool, Britain](https://www.flickr.com/people/100732098@N06) | [file page](https://commons.wikimedia.org/wiki/File:Candle_Backdrop_(49579993131).jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) ✔ | on-page credit | 3292×2304 |
+| `workshops/handmade-candle-display-{480,960,1440,2048}.webp` | Workshops · What you’ll create | [Globetrotter19](https://commons.wikimedia.org/wiki/User:Globetrotter19) | [file page](https://commons.wikimedia.org/wiki/File:%27Fest_der_Handwerksk%C3%BCnste%27_Festival,_%27Vom_Vater_zum_Sohn%27_Volkskunst_und_Kunsthandwerkverein,_Kerzen,_2026_Buda.jpg) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) ✔ | on-page credit | 2048×1536 |
+| `workshops/wax-lace-glass-{480,960,1440,2048}.webp` | Workshops · What you’ll create | [Klare Mat](https://commons.wikimedia.org/w/index.php?title=User:Klare_Mat&action=edit&redlink=1) | [file page](https://commons.wikimedia.org/wiki/File:Burning_candle_creation.jpg) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) ✔ | on-page credit | 3264×1836 |
+| `workshops/beeswax-taper-lit-{480,960,1440}.webp` | Workshops · What you’ll create | Titus Tscharntke | [file page](https://commons.wikimedia.org/wiki/File:Wax_candles_lit.jpg) | Public domain ✔ | not required | 1711×1263 |
+| `workshops/candle-water-glass-{480,960,1440,2048}.webp` | Workshops · Who can join | [Dave Nakayama from Palo Alto, USA](https://www.flickr.com/people/38891581@N00) | [file page](https://commons.wikimedia.org/wiki/File:Candle_%26_water_(3240619536).jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) ✔ | on-page credit | 2808×1872 |
+| `kits/wax-sheets-wicks-{480,960,1440,2048}.webp` | Kits · Hero | [စာကလေး](https://commons.wikimedia.org/wiki/User:GTSPACE) | [file page](https://commons.wikimedia.org/wiki/File:Wax_Candle.jpg) | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) ✔ | not required | 6000×8000 |
+| `kits/packaged-tapers-{480,960,1440,2048}.webp` | Kits · Explore — After a workshop | [SarKaLay](https://commons.wikimedia.org/wiki/User:SarKaLay) | [file page](https://commons.wikimedia.org/wiki/File:Candle_Wax.jpg) | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) ✔ | not required | 4000×2992 |
+| `kits/plain-soy-candle-{480,960,1440,2048}.webp` | Kits · Explore — Your first candle (circle) | mikehipp | [file page](https://commons.wikimedia.org/wiki/File:Single_plain_soy_candle.jpg) | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0) ✔ | on-page credit | 2592×1946 |
+| `kits/tealight-tin-{480,960,1440,2048}.webp` | Kits · Explore — Making with someone | [Barbara-Ingeborg](https://commons.wikimedia.org/w/index.php?title=User:Barbara-Ingeborg&action=edit&redlink=1) | [file page](https://commons.wikimedia.org/wiki/File:Candle_in_Paris.jpg) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) ✔ | on-page credit | 4592×3056 |
+| `kits/beeswax-texture-{480,960,1440,2048}.webp` | Kits · What’s inside (arch) | Paolo Neo | [file page](https://commons.wikimedia.org/wiki/File:Wax_candle_detail.jpg) | Public domain ✔ | not required | 2048×1536 |
+| `kits/wax-drips-{480,960,1440,2048}.webp` | Kits · Own pace | [Anderson Mancini from Sao Paulo, Brazil](https://www.flickr.com/people/17912374@N06) | [file page](https://commons.wikimedia.org/wiki/File:Wax_(2275036467).jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) ✔ | on-page credit | 2475×3002 |
+| `kits/candle-glass-orb-{480,960,1440,2048}.webp` | Kits · Own pace | [W.carter](https://commons.wikimedia.org/wiki/User:W.carter) | [file page](https://commons.wikimedia.org/wiki/File:Candle_light_projected_through_a_glass_orb.jpg) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) ✔ | on-page credit | 4724×2657 |
+| `kits/gift-box-candle-{480,960,1440,2048}.webp` | Kits · A creative gift | Sindugab | [file page](https://commons.wikimedia.org/wiki/File:Decorative_candle_and_flowers.jpg) | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) ✔ | not required | 3072×4608 |
+
+> **The Kits page photos are stand-ins, not the studio's kit.** They show candle-making materials and finished
+> candles, and the page never presents them as the product. Replace them with photos of the real kit once it is
+> confirmed (see `docs/CONTENT-NEEDS.md` K1–K3).
+
+Rejected during this pass:
+- **Duplicates of photos already on the site:** `Candlemaking, candle molds, poured candles` and `ExpoIndigenous2015 048` are already used on the homepages.
+- **Identifiable faces:** candle-dipping photos at stoves and markets, and festival portraits.
+- **Ski-wax products, not candle wax:** Swix, Toko and Rex.
+- **Branded retail shelves.**
+
 ## Photo-pending slots: asset checklist
 
 No suitable verified-licence photograph was found for these subjects. Each slot is a labelled frame (`.photo-pending`)

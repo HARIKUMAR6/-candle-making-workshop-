@@ -4,6 +4,7 @@
 
 import './components/site-header.js';
 import './components/site-footer.js';
+import './components/scroll-top.js';
 import { initTheme } from './core/theme.js';
 import { initDirection } from './core/direction.js';
 

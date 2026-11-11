@@ -17,6 +17,8 @@ export const icons = {
   close: (o) => svg('<path d="M6 6l12 12M18 6 6 18"/>', o),
   chevronDown: (o) => svg('<path d="m6 9 6 6 6-6"/>', o),
   arrowEnd: (o) => svg('<path d="M5 12h14M13 6l6 6-6 6"/>', { ...o, cls: `flip-rtl ${o?.cls ?? ''}` }),
+  // Plain vertical arrow: up is up in both directions, so it never mirrors.
+  arrowUp: (o) => svg('<path d="M12 19V5M6 11l6-6 6 6"/>', o),
   arrowUpEnd: (o) => svg('<path d="M7 17 17 7M8 7h9v9"/>', { ...o, cls: `flip-rtl ${o?.cls ?? ''}` }),
   mail: (o) => svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', o),
   alert: (o) => svg('<circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/>', o),

@@ -50,11 +50,11 @@ function mobileItem(item, i) {
   }
   return `
     <li class="border-b border-line" data-disclosure="accordion">
-      <button type="button" class="mobile-link w-full group" aria-expanded="${isCurrent(item)}" aria-controls="m-nav-${item.id}" ${isCurrent(item) ? 'data-current' : ''}>
+      <button type="button" class="mobile-link w-full group" aria-expanded="false" aria-controls="m-nav-${item.id}" ${isCurrent(item) ? 'data-current' : ''}>
         ${number(i)}<span>${item.label}</span>
         ${icons.chevronDown({ size: 20, cls: 'ms-auto text-muted transition-transform duration-300 group-aria-expanded:rotate-180' })}
       </button>
-      <ul id="m-nav-${item.id}" class="grid gap-1 pb-4 ps-[calc(2.75rem-0.875rem)]" ${isCurrent(item) ? '' : 'hidden'}>
+      <ul id="m-nav-${item.id}" class="grid gap-1 pb-4 ps-[calc(2.75rem-0.875rem)]" hidden>
         ${item.children.map((c) => `
           <li><a href="${c.href}" class="dropdown-link text-lead" ${ariaCurrent(c.id)}>${c.label}</a></li>`).join('')}
       </ul>
@@ -106,6 +106,7 @@ const template = () => `
 
 class SiteHeader extends HTMLElement {
   #controller = null;
+  #disclosures = [];
 
   connectedCallback() {
     if (!this.hasAttribute('data-rendered')) {
@@ -117,7 +118,7 @@ class SiteHeader extends HTMLElement {
     const { signal } = this.#controller;
 
     this.#initScroll(signal);
-    this.querySelectorAll('[data-disclosure]').forEach((el) => initDisclosure(el, { signal }));
+    this.#disclosures = [...this.querySelectorAll('[data-disclosure]')].map((el) => initDisclosure(el, { signal })).filter(Boolean);
     this.#initMobileMenu(signal);
     this.dispatchEvent(new CustomEvent('ew:controls-rendered', { bubbles: true }));
   }
@@ -137,6 +138,11 @@ class SiteHeader extends HTMLElement {
 
   #closeMenu = null;
 
+  /** Every dropdown (desktop popover + mobile accordion) back to CLOSED. */
+  #resetDisclosures() {
+    this.#disclosures.forEach((d) => d.close());
+  }
+
   #initMobileMenu(signal) {
     const menu = this.querySelector('#mobile-menu');
     const opener = this.querySelector('[data-menu-open]');
@@ -145,6 +151,7 @@ class SiteHeader extends HTMLElement {
       .filter((el) => el.getClientRects().length && !el.closest('[hidden]'));
 
     const open = () => {
+      this.#resetDisclosures(); // Home is always closed when the menu opens, whatever happened before
       menu.inert = false;
       menu.setAttribute('data-open', '');
       opener.setAttribute('aria-expanded', 'true');
@@ -157,6 +164,7 @@ class SiteHeader extends HTMLElement {
       menu.inert = true;
       opener.setAttribute('aria-expanded', 'false');
       root.removeAttribute('data-scroll-lock');
+      this.#resetDisclosures();
       if (restoreFocus && opener.getClientRects().length) opener.focus({ preventScroll: true });
     };
     this.#closeMenu = close;
@@ -177,7 +185,10 @@ class SiteHeader extends HTMLElement {
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }, { signal });
     // Never leave the modal open (and the page scroll-locked) in the desktop layout.
-    matchMedia(DESKTOP).addEventListener('change', (e) => e.matches && close({ restoreFocus: false }), { signal });
+    matchMedia(DESKTOP).addEventListener('change', (e) => {
+      this.#resetDisclosures();
+      if (e.matches) close({ restoreFocus: false });
+    }, { signal });
   }
 }
 

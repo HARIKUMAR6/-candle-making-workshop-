@@ -183,6 +183,39 @@
   .social-btn:hover { translate: 0 -2px; }
   @media (prefers-reduced-motion: reduce) { .social-btn:hover { translate: none; } }
 
+  /* Floating back-to-top (<scroll-to-top>, components/scroll-top.js).
+     Logical inset → bottom-right in LTR, bottom-left in RTL. Raised-surface fill + strong hairline
+     reads on both light bands and the dark inverse bands, in both themes. z-index sits under the
+     header (50) and the mobile menu (60), so it never shows through an open menu. */
+  .scroll-top {
+    position: fixed;
+    inset-block-end: calc(1rem + env(safe-area-inset-bottom, 0px));
+    inset-inline-end: calc(1rem + max(env(safe-area-inset-right, 0px), env(safe-area-inset-left, 0px)));
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    inline-size: 3rem;
+    block-size: 3rem;
+    border: 1px solid var(--c-border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--c-surface-raised);
+    color: var(--c-ink);
+    box-shadow: var(--sh-lift);
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 0.75rem;
+    transition: opacity 250ms var(--ease-soft), translate 250ms var(--ease-soft), visibility 0s linear 250ms,
+      color 200ms var(--ease-soft), border-color 200ms var(--ease-soft);
+  }
+  .scroll-top[data-visible] { opacity: 1; visibility: visible; translate: 0 0; transition-delay: 0s; }
+  .scroll-top:hover,
+  .scroll-top:focus-visible { color: var(--c-accent); border-color: var(--c-accent); }
+  .scroll-top[data-visible]:hover { translate: 0 -2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-top { transition: none; }
+    .scroll-top[data-visible]:hover { translate: 0 0; }
+  }
+
   /* ---------- Form fields ---------- */
   /* align-content: start — when a row-mate has a hint line, the field must not stretch its input */
   .field { display: grid; align-content: start; gap: 0.5rem; }
